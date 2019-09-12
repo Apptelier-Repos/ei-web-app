@@ -64,7 +64,7 @@ class SignIn extends React.Component {
     const data = new FormData(form);
     let formDataObject = ObjectFromFormData(data);
     let url =
-      "https://stp-web-api.azurewebsites.net/api/useraccounts/authenticate";
+      "https://ei-web-api.azurewebsites.net/api/useraccount/authenticate";
     fetch(url, {
       method: "POST",
       mode: "cors",
@@ -83,7 +83,7 @@ class SignIn extends React.Component {
           SessionManager.createSession();
           this.props.history.push("/");
         }
-        if (response.status === 400) {
+        if (response.status === 401) {
           this.setState({ invalidCredentials: true });
         }
       })
