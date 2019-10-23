@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -8,14 +9,21 @@ import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import AssignmentTurnedIn from "@material-ui/icons/AssignmentTurnedIn";
+import PaletteIcon from "@material-ui/icons/Palette";
 
 export const mainListItems = (
   <div>
-    <ListItem button>
+    <ListItem button component={Link} to="/">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Tablero de inicio" />
+    </ListItem>
+    <ListItem button component={Link} to="/wireColors">
+      <ListItemIcon>
+        <PaletteIcon />
+      </ListItemIcon>
+      <ListItemText primary="Colores de circuitos" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

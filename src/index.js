@@ -8,6 +8,7 @@ import WithBars from "./pages/withBars";
 import Index from "./pages/index";
 import SignIn from "./pages/signIn";
 import NotFound from "./pages/notFound";
+import WireColors from "./pages/wireColors";
 
 const routing = (
   <Router>
@@ -22,6 +23,7 @@ const routing = (
           })}
         />
         <ProtectedRoute path="/signIn" component={SignIn} />
+        <ProtectedRoute path="/wireColors" component={WithBars(WireColors)} />
         <Route component={NotFound} />
       </Switch>
     </div>

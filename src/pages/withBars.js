@@ -108,7 +108,7 @@ function withBars(WrappedComponent, { ...args }) {
     constructor(props) {
       super(props);
       this.state = {
-        drawerOpen: false,
+        drawerOpen: true,
         menuAppBarAnchorEl: null
       };
     }
@@ -142,7 +142,10 @@ function withBars(WrappedComponent, { ...args }) {
         <div className={classes.root}>
           <AppBar
             position="absolute"
-            className={clsx(classes.appBar, this.state.drawerOpen && classes.appBarShift)}
+            className={clsx(
+              classes.appBar,
+              this.state.drawerOpen && classes.appBarShift
+            )}
           >
             <Toolbar className={classes.toolbar}>
               <IconButton
@@ -207,7 +210,10 @@ function withBars(WrappedComponent, { ...args }) {
           <Drawer
             variant="permanent"
             classes={{
-              paper: clsx(classes.drawerPaper, !this.state.drawerOpen && classes.drawerPaperClose)
+              paper: clsx(
+                classes.drawerPaper,
+                !this.state.drawerOpen && classes.drawerPaperClose
+              )
             }}
             open={this.state.drawerOpen}
           >
