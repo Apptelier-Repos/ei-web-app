@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import WireColorPalette from "../components/WireColorPalette";
+import { getWirecolor } from "../helpers/services";
 
 const styles = theme => ({
   paper: {
@@ -26,12 +27,7 @@ class WireColors extends React.Component {
   };
 
   componentDidMount() {
-    fetch("https://ei-web-api.azurewebsites.net/api/wirecolor", {
-      method: "GET",
-      mode: "cors",
-      cache: "no-cache"
-    })
-      .then(res => res.json())
+    getWirecolor()
       .then(data => {
         this.setState({ wireColorsData: data });
       })

@@ -17,6 +17,7 @@ import InvalidCredentialsErrorMessage from "../components/InvalidCredentialsErro
 import PoweredByApptelier from "../components/PoweredByApptelier";
 import ObjectFromFormData from "../utils/objectFromFormData";
 import SessionManager from "../session/sessionManager";
+import { authenticate, getUseraccount } from "../helpers/services";
 
 const styles = theme => ({
   root: {
@@ -63,22 +64,9 @@ class SignIn extends React.Component {
     const form = event.target;
     const data = new FormData(form);
     let formDataObject = ObjectFromFormData(data);
-    let url =
-      "https://ei-web-api.azurewebsites.net/api/useraccount/authenticate";
-    fetch(url, {
-      method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      redirect: "follow",
-      referrer: "no-referrer",
-      body: JSON.stringify(formDataObject)
-    })
+    authenticate(formDataObject)
       .then(response => {
-        response.json();
+        //response.json();
         if (response.status === 200) {
           SessionManager.createSession();
           this.props.history.push("/");
@@ -91,12 +79,7 @@ class SignIn extends React.Component {
   };
 
   componentDidMount() {
-    fetch("https://ei-web-api.azurewebsites.net/api/useraccount", {
-      method: "GET",
-      mode: "cors",
-      cache: "no-cache"
-    })
-      .then(res => res.json())
+    getUseraccount()      
       .then(data => {
         this.setState({ userAccounts: data });
       })
