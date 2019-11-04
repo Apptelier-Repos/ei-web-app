@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import WireColors from './wireColors';
+import { testRender } from '../helpers/testTools'
 
 it('WireColors render without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<WireColors />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  testRender(<WireColors />);
 });

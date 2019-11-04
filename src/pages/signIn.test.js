@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import SignIn from './signIn';
+import { testRender } from '../helpers/testTools'
 
 it('SignIn render without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<SignIn />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  testRender(<SignIn />);
 });

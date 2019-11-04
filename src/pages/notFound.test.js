@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import NotFound from './notFound';
+import { testRender } from '../helpers/testTools'
 
 it('NotFound render without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<NotFound />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  testRender(<NotFound />);
 });
